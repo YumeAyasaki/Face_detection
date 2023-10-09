@@ -27,7 +27,7 @@ def register_user(request):
     if User.objects.filter(username=username).exists() or password != confirm_password:
         return HttpResponseRedirect('/register')
     else:
-        user = User.objects.create_user(username=username, password=password)
+        user = User.objects.create_user(username=username, password=password, profile_image=None)
         user.save()
         return HttpResponseRedirect('/login')
     
@@ -39,4 +39,11 @@ def logout_user(request):
 
 @login_required
 def upload_image(request):
-    pass
+    print(request.FILES.__dict__)
+    image = request.FILES['profile_image']
+
+    user = request.user
+    user.profile_image = image
+    user.save()
+
+    return HttpResponseRedirect('/')
