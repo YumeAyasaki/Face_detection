@@ -7,7 +7,7 @@ class CustomUser(AbstractUser):
 
 class ProfileImage(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to='profile_images/', blank=True)
+    image = models.ImageField(upload_to='media/profile_images/', blank=True)
     
     def __unicode__(self):
         return self.user.username

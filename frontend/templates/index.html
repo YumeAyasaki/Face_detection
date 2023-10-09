@@ -36,7 +36,6 @@
                                             {% csrf_token %}
                                             {% if user.profile_image %}
                                                 <img src="{{ user.profile_image.url }}" alt="Profile Image" width="200" height="200">
-                                                {{ user.profile_image.url }}
                                             {% endif %}
                                             <div class="mb-3">
                                                 <input type="file" name="profile_image" accept="image/*" class="form-control" id="profile_image">
