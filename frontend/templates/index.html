@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Register - SB Admin</title>
+        <title>Homepage</title>
         <link href={% static "css/styles.css" %} rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -21,9 +21,25 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Account</h3></div>
                                     <div class="card-body">
-                                        <form>
-
+                                        {% if user.is_anonymous %}
+                                        <div class="mb-3">
+                                            <a class="btn btn-primary" href="/login/">Login</a>
+                                        </div>
+                                        <div class="mb-3">
+                                            <a class="btn btn-primary" href="/register/">Register</a>
+                                        </div>
+                                        {% else %}
+                                        <form action="/placeholder/" method="POST">
+                                            {% csrf_token %}
+                                            {% if user.profile_image if null}
+                                                
+                                            {% else %}
+                                            <div class="mb-3">
+                                                <button class="btn btn-primary" formaction="/api/logout/">Logout</button>
+                                            </div>
                                         </form>
+                                        
+                                        {% endif %}
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small"><a href="\login">Have an account? Go to login</a></div>
