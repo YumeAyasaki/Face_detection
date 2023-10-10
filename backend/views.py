@@ -1,14 +1,11 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.conf import settings
 
 import os
 import cv2
 import numpy as np
-from django.http import JsonResponse
-import base64
-import io
 
 # Create your views here.
 def login_user(request):
